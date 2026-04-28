@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: CI/CD
 
 on:
   push:
@@ -10,22 +10,60 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
-#    - name: Install Docker
-#      run: sudo apt install docker.io -y
+    # Install Docker
+    - name: Install Docker
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y docker.io
 
+    # Build Docker image
     - name: Build Image
       run: docker build -t open5gs-core .
 
+    # Install kubectl
     - name: Install kubectl
       run: |
         curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
         chmod +x kubectl
         sudo mv kubectl /usr/local/bin/
 
-    - name: Deploy
-      run: bash scripts/deploy.sh
+    # Install KIND
+    - name: Install KIND
+      run: |
+        curl -Lo ./kind https://kind.sigs.k8s.io/dl/latest/kind-linux-amd64
+        chmod +x ./kind
+        sudo mv ./kind /usr/local/bin/kind
 
+    # Create cluster
+    - name: Create Cluster
+      run: kind create cluster
+
+    # Load image
+    - name: Load Image
+      run: kind load docker-image open5gs-core
+
+    # Deploy
+    - name: Deploy
+      run: kubectl apply -f k8s/
+
+    # Debug
+    - name: Debug Pods
+      run: kubectl get pods -o wide
+
+    # Wait
+    - name: Wait
+      run: sleep 15
+
+    # Test
     - name: Test
-      run: bash scripts/test.sh
+      run: |
+        kubectl get pods
+        if kubectl get pods | grep -q Running
+        then
+          echo "PASS ✅"
+        else
+          echo "FAIL ❌"
+          exit 1
+        fi
