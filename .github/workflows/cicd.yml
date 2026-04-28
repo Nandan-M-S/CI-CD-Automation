@@ -12,8 +12,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Install Docker
-      run: sudo apt install docker.io -y
+#    - name: Install Docker
+#      run: sudo apt install docker.io -y
 
     - name: Build Image
       run: docker build -t open5gs-core .
