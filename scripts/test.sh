@@ -12,7 +12,7 @@ if [ -d "$HOME/UERANSIM" ]; then
 
     rm -f ue.log
 
-    ./build/nr-ue -c config/open5gs-ue.yaml > ue.log 2>&1 &
+    ./build/nr-ue -c config/ue1.yaml >> ue.log 2>&1 &
     UE_PID=$!
 
     echo "Waiting for registration..."
