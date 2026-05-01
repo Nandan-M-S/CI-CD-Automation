@@ -1,11 +1,11 @@
 # CI/CD Pipeline for Kubernetes Deployment and Testing of 5G Core
 
-## 📌 Overview  
+## Overview  
 This project demonstrates an automated CI/CD pipeline for deploying and testing a 5G Core network. It integrates Open5GS for the core network, UERANSIM for UE simulation, Docker for containerization, Kubernetes for orchestration, and GitHub Actions for automation.
 
 ---
 
-## 🛠️ Technologies Used  
+## Technologies Used  
 - Open5GS (5G Core Network)  
 - UERANSIM (UE and gNB Simulation)  
 - Docker  
@@ -14,16 +14,8 @@ This project demonstrates an automated CI/CD pipeline for deploying and testing 
 
 ---
 
-## ⚙️ Installation Summary  
+## Installation Summary  
 The setup involves installing Docker, Kubernetes (Minikube), Open5GS, and UERANSIM. After installation, the system is configured so that Docker images can be used inside Kubernetes.
-
----
-
-## 📁 Project Structure  
-- Dockerfile for building the Open5GS image  
-- Kubernetes configuration files for deployment and service  
-- Scripts for deployment, testing, and cleanup  
-- GitHub workflow file for CI/CD automation  
 
 ---
 
@@ -40,10 +32,10 @@ project/
 │   └── cleanup.sh  
 └── .github/workflows/  
     └── cicd.yml  
-
+    
 ---
 
-## 🚀 Deployment Process  
+## Deployment Process  
 1. Build the Docker image for Open5GS  
 2. Deploy the application to Kubernetes  
 3. Verify deployment status  
@@ -51,7 +43,7 @@ project/
 
 ---
 
-## 🧪 Testing Process  
+## Testing Process  
 - A UE (User Equipment) connects to the 5G Core  
 - Registration and session establishment logs are checked  
 - Based on logs, the system outputs PASS or FAIL  
@@ -68,7 +60,7 @@ The CI/CD pipeline is triggered automatically on every push to the repository. I
 
 ---
 
-## 🔥 Multiple UE Testing  
+## Multiple UE Testing  
 - Multiple UEs are launched simultaneously  
 - Each UE attempts to connect to the 5G Core  
 - Logs are analyzed to verify successful connections  
@@ -76,30 +68,5 @@ The CI/CD pipeline is triggered automatically on every push to the repository. I
 
 ---
 
-## 🎯 Workflow Summary  
-1. Build Docker image  
-2. Deploy to Kubernetes  
-3. Run UE simulation  
-4. Analyze logs  
-5. Return PASS or FAIL  
-
----
-
-## ⚠️ Common Issues  
-- Pod not running → Check Kubernetes deployment status  
-- UE not connecting → Verify UERANSIM configuration and subscriber data  
-- Image not found → Ensure Docker is correctly configured with Kubernetes  
-
----
-
-## ✅ Final Outcome  
-- Automated deployment of 5G Core  
-- Kubernetes-based orchestration  
-- Real-time UE testing  
-- CI/CD pipeline automation  
-- Support for multiple user simulation  
-
----
-
-## 👨‍💻 Author  
+## Author  
 **Nandan M S**
