@@ -21,19 +21,19 @@ The setup involves installing Docker, Kubernetes (Minikube), Open5GS, and UERANS
 
 ## 📁 Project Structure
 
+```
 project/
-
-├── Dockerfile  
-├── k8s/  
-│    ├── deployment.yaml  
-│    └── service.yaml  
-├── scripts/  
-│   ├── deploy.sh  
-│   ├── test.sh  
-│   └── cleanup.sh  
-└── .github/workflows/  
-    └── cicd.yml  
-    
+├── Dockerfile
+├── k8s/
+│   ├── deployment.yaml
+│   └── service.yaml
+├── scripts/
+│   ├── deploy.sh
+│   ├── test.sh
+│   └── cleanup.sh
+└── .github/workflows/
+    └── cicd.yml
+```  
 ---
 
 ## Deployment Process  
